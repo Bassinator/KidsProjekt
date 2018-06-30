@@ -29,24 +29,29 @@ void loop() {
   tasterGedrueckt = digitalRead(buttonPin); // 0 Taster nicht gedrückt; 1 Taster gedrückt
   if ( tasterGedrueckt != letzterLoopTasterGedrueckt ) { // wenn taster nicht den gleichen Zustand hat wie letzten loop
     if ( tasterGedrueckt == 1 ) {
-      an = true; // true heisst wahr. Also an = wahr
-    }
-    if ( tasterGedrueckt == 0 ) {
-      an = false; // false heisst falsch. Also an = false
+      if ( an ) {
+        an = false; // false heisst falsch. Also an = false
+      }
+      else {
+        an = true; // true heisst wahr. Also an = wahr
+      }
     }
   }
 
-
+  int dauer = 200;
   if ( an ) {
     //  leds.setColorRGB(0, rot, grün, blau);
     leds.setColorRGB(0, 0, 0, 255);
-    delay(100);
+    delay(dauer);
     leds.setColorRGB(0, 255, 0, 0);
-    delay(100);
+    delay(dauer);
     leds.setColorRGB(0, 255, 215, 0);
-    delay(100);
+    delay(dauer);
     leds.setColorRGB(0, 0, 255, 0);
-    delay(100); 
+    delay(dauer);
+    leds.setColorRGB(0, 255, 0, 255);
+    delay(dauer);
+    leds.setColorRGB(0, 82, 139, 139);
   }
   else {
     leds.setColorRGB(0, 0, 0, 0);
